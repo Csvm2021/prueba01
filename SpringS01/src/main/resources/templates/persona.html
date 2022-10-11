@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title th:text = "${titulo}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" ></link>
+</head>
+<body>
+	<h1 class="titulo-rojo" th:text = "${tituloListado}"></h1>
+	<p th:text = "${claveParam}"></p>
+	<p th:text = "${clave2Param}"></p>
+	
+	<br/>
+	<table>
+		<tr th:each = "usuarios:${user}">
+			<td th:text = "${usuarios.nombre}"/>
+			<td th:text = "${usuarios.apellidoPaterno}"/>
+			<td>
+				<span th:if="${usuarios.apellidoMaterno} == null" th:text="Error"></span>
+				<span th:unless="${usuarios.apellidoMaterno} == null" th:text="${usuarios.apellidoMaterno}"></span>
+			</td>
+			<td th:text = "${usuarios.genero}"/>
+			<td th:text = "${usuarios.edad}"/>
+		</tr>
+	</table>
+	<br/>
+	
+	<a href="http://localhost:9091/app/home">Inicio</a>
+	
+</body>
+</html>
